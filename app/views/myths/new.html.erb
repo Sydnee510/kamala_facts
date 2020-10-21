@@ -1,0 +1,24 @@
+<% if @myth.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@myth.errors.count, "error") %> prohibited this myth from being saved:</h2>
+  <ul>
+  <% @myth.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li> <br>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form_for(@myth) do |f| %>
+    
+    <%= f.label :new_myth_content %>
+    <%= f.text_area :false_content %> <br>
+    <%=f.submit %>
+    
+  <% end %>
+  <style>
+        li {
+          color: red;
+          font-weight: bold;
+        }
+</style>

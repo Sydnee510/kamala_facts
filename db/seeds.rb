@@ -1,0 +1,17 @@
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
+#
+# Examples:
+#
+#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
+#   Character.create(name: 'Luke', movie: movies.first)
+myth1 = Myth.create(false_content: "Kamala pushed a law that forces schools to turn undocumented students over to ICE")
+myth2 = Myth.create(false_content: "False claims levied at Kamala Harris over the Kevin Cooper case such as: withheld DNA evidence to keep a man on death row; denied DNA testing to exonerate a man on death row; kept a man on death row despite DNA testing that exonerated him.")
+myth3 = Myth.create(false_content: "Many smears and distortions about Kamala Harris’ anti-truancy record including: false claims about laughing about putting parents in jail if their kids missed school; locking up parents; targeting poor families and people of color")
+
+fact1 = Fact.create(true_content: "Kamala Harris has consistently been a supporter of sanctuary status and a champion for immigrant rights.", receipt_url: "https://medium.com/@blackwomenviews/debunking-the-lies-smears-and-distortions-about-kamala-harris-1718881a0ec3" , myth: myth1)
+fact2 = Fact.create(true_content: "Kamala Harris was not responsible for nor did she push for then Mayor Gavin Newsom’s 2008 unilateral decision to modify his policy to include reporting undocumented youth charged with felonies to ICE.", receipt_url: "https://medium.com/@blackwomenviews/debunking-the-lies-smears-and-distortions-about-kamala-harris-1718881a0ec3" , myth: myth1)
+fact3 = Fact.create(true_content: "Kamala Harris played no role in the Kevin Cooper case. Cooper was convicted of four murder counts in 1983, Cooper had exhausted all of his court appeals in November 2009 which was prior to Harris taking office as AG", receipt_url: "https://medium.com/@blackwomenviews/debunking-the-lies-smears-and-distortions-about-kamala-harris-1718881a0ec3" , myth: myth2)
+fact4 = Fact.create(true_content: "Cooper’s only recourse left was clemency which is solely within the Governor’s powers. He was denied clemency by all of the governors here after and finally Governor Newsom expanded the DNA testing in February 2019", receipt_url: "https://medium.com/@blackwomenviews/debunking-the-lies-smears-and-distortions-about-kamala-harris-1718881a0ec3" , myth: myth2)
+fact5 = Fact.create(true_content: "Tackling truancy was not about punishing or prosecuting parents (which was a rarely used last resort), it was about providing parents resources needed to get their children in school.", receipt_url: "https://medium.com/@blackwomenviews/debunking-the-lies-smears-and-distortions-about-kamala-harris-1718881a0ec3" , myth: myth3)
+fact6 = Fact.create(true_content: "Kamala Harris did not lock parents up. Kamala Harris made the decision to tackle the elementary school truancy crisis in San Francisco after discovering that 94% of homicide victims were high school drop outs", receipt_url: "https://medium.com/@blackwomenviews/debunking-the-lies-smears-and-distortions-about-kamala-harris-1718881a0ec3" , myth: myth3)

@@ -1,0 +1,16 @@
+<h1>Search Myths</h1>
+<h4>
+<%= form_tag myths_path, :method => 'get' do %>   
+    <%= text_field_tag :search, params[:search] %>   
+    <%= submit_tag "Search", name: nil %> </h4>
+<% end %>
+<br>
+<%= link_to 'Create Myth', new_myth_path %><br> <br>
+<% @myths.each do |myth| %>
+    <h3><%= link_to myth.false_content, myth %>
+    <%= link_to "Edit", edit_myth_path(myth) %>
+    <%= link_to "Delete", myth_path(myth), method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %></h3>
+    
+ 
+    
+<%end%>
