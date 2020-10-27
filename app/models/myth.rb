@@ -11,14 +11,13 @@ class Myth < ApplicationRecord
     # d = c.join(", ")
     # end
     
-    def fact_content
-       a = self.facts.map do |fact| 
-       [ fact.true_content, 
-       fact.receipt_url ]
-        end 
-        b = a.join("   
-         " )
-    end 
+    # def fact_content
+    #    a = self.facts.map do |fact| 
+    #    [ fact.true_content ]
+    #     end 
+    #     b = a.join("   
+    #      " )
+    # end 
 
    
 

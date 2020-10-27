@@ -1,2 +1,13 @@
 <h2><%= @myth.false_content %> </h2><br><br>
-Facts: <%= @myth.fact_content %>
+
+  
+<% @myth.facts.each do |fact| %>
+    <ul> 
+    <li> <%= fact.true_content %>
+    <a href="<%=fact.receipt_url %>">Receipt</a> 
+    </li>
+    </ul>
+<% end %>
+    
+
+<a href="/">Back</a>
