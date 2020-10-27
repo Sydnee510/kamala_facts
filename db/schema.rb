@@ -12,13 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2020_10_21_063215) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "facts", force: :cascade do |t|
     t.text "true_content"
     t.text "receipt_url"
     t.integer "myth_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["myth_id"], name: "index_facts_on_myth_id"
   end
 
   create_table "myths", force: :cascade do |t|
@@ -27,5 +29,4 @@ ActiveRecord::Schema.define(version: 2020_10_21_063215) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  add_foreign_key "facts", "myths"
 end

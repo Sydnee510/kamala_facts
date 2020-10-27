@@ -3,7 +3,7 @@ class CreateFacts < ActiveRecord::Migration[6.0]
     create_table :facts do |t|
       t.text :true_content
       t.text :receipt_url
-      t.references :myth, foreign_key: true
+      t.integer :myth_id
       t.timestamps
     end
   end

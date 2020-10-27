@@ -1,7 +1,7 @@
 class MythsController < ApplicationController
     def index 
         if params[:search]
-            @myths = Myth.search_myth(params[:search])
+            @myths = Myth.search_content_for(params[:search])
         else
             @myths = Myth.all.order(:false_content) 
     end 
