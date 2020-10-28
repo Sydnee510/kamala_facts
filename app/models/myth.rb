@@ -2,6 +2,7 @@ class Myth < ApplicationRecord
     include PgSearch
     has_many :facts
     validates :false_content, presence: true
+    accepts_nested_attributes_for :facts, reject_if: :all_blank
    # pg_search_scope :search_for, against: %i(false_content)
     pg_search_scope :search_content_for, against: :false_content, using: { tsearch: { any_word: true } }
     # scope :search_myth, ->(myth_search) { where("false_content LIKE ?", "%#{myth_search}%") }

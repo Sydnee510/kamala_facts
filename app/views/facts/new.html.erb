@@ -1,0 +1,28 @@
+<% if @fact.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@fact.errors.count, "error") %> prohibited this fact from being saved:</h2>
+  <ul>
+  <% @fact.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li> <br>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+<%= form_for [@myth, @fact] do |f| %>
+    
+    <%= f.label :new_fact_content %>
+    <%= f.text_area :true_content %> <br>
+    <%= f.label :receipt_url %>
+    <%= f.text_area :receipt_url %> <br>
+    <%=f.submit %>
+    
+  <% end %>
+  <style>
+        li {
+          color: red;
+          font-weight: bold;
+        }
+</style>
+<%= link_to 'Back', myth_path(@myth) %>
+<a href="/">Home</a>

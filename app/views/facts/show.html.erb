@@ -1,0 +1,11 @@
+<h2><%= @fact.true_content %> </h2><br><br>
+<%= link_to "Receipt @fact.receipt_url() %>
+
+<% @facts.each do |fact| %>
+    <h2><%= @fact.true_content %> </h2><br><br>
+    <%= link_to @fact.receipt_url, fact %>
+ 
+    
+<%end%>
+
+<a href="/">Search</a>

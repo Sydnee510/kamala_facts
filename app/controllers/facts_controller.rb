@@ -1,13 +1,8 @@
 class FactsController < ApplicationController
-    def index 
-        if params[:search]
-           
-                @facts = Fact.searched(params[:search])
-            else
-                @facts = Fact.all.order(:myth_id) 
-        end 
-        
-    end 
+   before_action :set_myth
+   def index
+    @facts = Fact.all 
+end
     def show 
         @fact = Fact.find(params[:id])
     end 
@@ -18,9 +13,10 @@ class FactsController < ApplicationController
         @fact = Fact.find(params[:id])
     end 
     def create 
-        @fact = Fact.new(fact_params)
-        if  @fact.save 
-            redirect_to fact_path(@fact), notice: "Fact Successfully Created"
+       # @myth = Myth.find(params[:myth_id])
+        @fact = @myth.facts.new(fact_params)
+        if @fact.save 
+            redirect_to myth_path(@myth), notice: "Fact Successfully Created"
         else 
             render 'new'
         end 
@@ -39,7 +35,11 @@ class FactsController < ApplicationController
     end
 
     private 
+    def set_myth
+        @myth = Myth.find(params[:myth_id])
+    end 
+
     def fact_params
-        params.require(:fact).permit(:true_content, :receipt_url, :myth_id, myth_attributes: [:false_content])
+        params.require(:fact).permit(:true_content, :receipt_url, :myth_id, myth_attributes: [:myth_id])
     end 
 end

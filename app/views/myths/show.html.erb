@@ -1,6 +1,7 @@
 <h2><%= @myth.false_content %> </h2><br><br>
 
-  
+
+<a href="/myths/<%= @myth.id %>/facts/new">Add a new fact</a>
 <% @myth.facts.each do |fact| %>
     <ul> 
     <li> <%= fact.true_content %>
