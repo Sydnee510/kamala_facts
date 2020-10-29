@@ -2,15 +2,38 @@
 <h4>
 <%= form_tag myths_path, :method => 'get' do %>   
     <%= text_field_tag :search, params[:search] %>   
-    <%= submit_tag "Search", name: nil %> </h4>
+    <%= submit_tag "Search", name: nil %> 
+</h4>
+<% end %>
+
+<% if @myths.blank? %>
+<div id="error_explanation">
+  <h2>cant find any search results with that criteria</h2>
+  <h2>TRY AGAIN </h2>
+  Suggestions:
+<ul>
+<li>Make sure all words are spelled correctly.</li>
+<li>Try different keywords.</li>
+<li>Try more general keywords.</li>
+<li>Try fewer keywords.</li>
+</ul>
+  <a href ="/">back</a>
+</div>
 <% end %>
 <br>
+
 <%= link_to 'Create Myth', new_myth_path %><br> <br>
+<% if @myths.present? %>
 <% @myths.each do |myth| %>
     <h3><%= link_to myth.false_content, myth %>
     <%= link_to "Edit", edit_myth_path(myth) %>
-    <%= link_to "Delete", myth_path(myth), method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %></h3>
-    
- 
-    
+    <%= link_to "Delete", myth_path(myth), method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
+    </h3>
 <%end%>
+<% end %>
+<style>
+        h2 {
+          color: red;
+          font-weight: bold;
+        }
+</style>
