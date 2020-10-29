@@ -1,4 +1,5 @@
 class MythsController < ApplicationController
+    before_action :authenticate_user!, :only => [:new, :edit, :destroy]
     def index 
         if params[:search]
             @myths = Myth.search_content_for(params[:search])
@@ -9,6 +10,7 @@ end
     def show 
         @myth = Myth.find(params[:id])
     end 
+    
     def new 
         @myth = Myth.new
     end 

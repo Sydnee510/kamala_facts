@@ -11,6 +11,7 @@ gem 'rails', '~> 6.0.3', '>= 6.0.3.4'
 # Use Postgres as the database for Active Record
 gem 'pg'
 gem 'pg_search'
+gem 'devise'
 gem 'puma', '~> 4.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: 'myths#index'
   resources :myths do 
     resources :myths, only: [:index, :new, :show]

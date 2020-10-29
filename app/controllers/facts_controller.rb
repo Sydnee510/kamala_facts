@@ -1,5 +1,6 @@
 class FactsController < ApplicationController
-   before_action :set_myth
+    before_action :authenticate_user!, :only => [:new, :edit, :destroy]
+    before_action :set_myth
    def index
     @facts = Fact.all 
 end
