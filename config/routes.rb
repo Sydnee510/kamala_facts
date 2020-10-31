@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users, path_names: {
-    sign_up: ''
+    sign_up: 'register_not_allowed'
   }
   root to: 'myths#index'
   resources :myths do 
