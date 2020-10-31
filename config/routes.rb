@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, path_names: {
+    sign_up: ''
+  }
   root to: 'myths#index'
   resources :myths do 
     resources :myths, only: [:index, :new, :show]

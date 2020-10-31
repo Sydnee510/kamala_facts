@@ -1,7 +1,9 @@
 <h2><%= @myth.false_content %> </h2><br><br>
 
-
+<% if user_signed_in?%>
 <a href="/myths/<%= @myth.id %>/facts/new">Add a new fact</a>
+<% end %>
+
 <% @myth.facts.each do |fact| %>
     <ul> 
     <li> <%= fact.true_content %>
