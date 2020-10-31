@@ -1,10 +1,13 @@
-<a href ="/"><h1>Search Myths</h1> </a>
-<h4>
+<h2>Kamala's Fact Search Engine</h2>
+<h3>Search through all the lies and the smears and find out the truth today</h3>
+<img src="https://www.gannett-cdn.com/presto/2019/12/05/USAT/751f29ad-47cd-4791-9506-d4b6b846b53e-KamalaHarris.jpg?crop=3703,2083,x0,y188&width=3200&height=1801&format=pjpg&auto=webp" alt="kamala"></img>
+<div class="search">
 <%= form_tag myths_path, :method => 'get' do %>   
-    <%= text_field_tag :search, params[:search] %>   
-    <%= submit_tag "Search", name: nil %> 
-</h4>
+    <%= text_area_tag :search, params[:search], :class => 'search-bar'%>   
+    <%= submit_tag "Search Claims", name: nil, :class => 'search-button' %> 
+
 <% end %>
+<div>
 
 <% if @myths.blank? %>
 <div id="error_explanation">
@@ -27,6 +30,7 @@
 <% end %>
 
 <% if @myths.present? %>
+<h5>FALSE STATEMENTS:</h5>
 <% @myths.each do |myth| %>
     <h3><%= link_to myth.false_content, myth %>
     <% if user_signed_in?%>
@@ -37,8 +41,86 @@
 <%end%>
 <% end %>
 <style>
-        h2 {
-          color: red;
-          font-weight: bold;
-        }
+       
+.search {
+  padding: 2em;
+  margin: 0 auto;
+  width: 541px;
+  height: 31px;
+ 
+}
+img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25%;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+.search-bar{
+  width: 541px;
+  height: 31px;
+ 
+
+}
+
+input[type="search"] {
+  border: none;
+  whitespace: wrap;
+  border-radius: 5px 5px 5px 5px;
+	background: #E9E9E9;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	padding: 0.35em 0.75em;
+	border: none;
+	font-size: 1.1em;
+	text-decoration: none;
+	line-height: normal;
+	max-height: 51;
+  
+  flex: 2 0 250px;
+}
+
+input[type="search"]:focus {
+  background: Thistle;
+  color: white;
+  letter-spacing: .1em;
+  transition: background 400ms ease-in-out;
+  outline: none;
+}
+
+.search-button {
+  flex: 1 0 90px;
+  
+  max-height: 3em;
+  font-size: 1.1em;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  border-radius: 0px 5px 5px 0px;
+	background: silver;
+  color: white;
+  border: none;
+  padding: 0.35em 0.75em;
+  cursor: pointer;
+
+}
+.search-button:hover {
+  background: skyblue;
+}
+
+
+  
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+  
+  
+
+
+      
 </style>

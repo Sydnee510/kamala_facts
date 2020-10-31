@@ -1,12 +1,14 @@
-<h2><%= @myth.false_content %> </h2><br><br>
+<div class="myth">
+<h5>FALSE STATEMENT: </h5>
+<h3><%= @myth.false_content %> </h3><br><br>
 
 <% if user_signed_in?%>
 <a href="/myths/<%= @myth.id %>/facts/new">Add a new fact</a>
 <% end %>
-
+<h5>Facts:</h5>
 <% @myth.facts.each do |fact| %>
     <ul> 
-    <li> <%= fact.true_content %>
+    <li class="t-content"> <%= fact.true_content %>
     <a href="<%=fact.receipt_url %>">Receipt</a> 
     </li>
     </ul>
@@ -14,3 +16,23 @@
     
 
 <a href="/">Back</a>
+</div>
+
+<style>
+.myth{
+    padding: 2em;
+    margin: 0 auto;
+    width: 541px;
+    height: 31px; 
+    position: relative;  
+    
+}
+.t-content{
+    list-style-type:none;
+   
+    border-radius: 25px;
+  background: #E8E8E8;
+  padding: 20px;
+  
+}
+</style>
