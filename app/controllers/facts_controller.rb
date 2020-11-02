@@ -23,8 +23,8 @@ end
         end 
     end 
     def destroy 
-        @fact = Fact.find(params[:id]).destroy
-        redirect_to facts_path
+        @fact = @myth.facts.find(params[:id]).destroy
+        redirect_to myth_path(@myth)
     end 
     def update 
         @fact = Fact.find(params[:id])

@@ -11,7 +11,10 @@
      <%= fact.true_content %>
     <br>
     <button onclick="document.location='<%=fact.receipt_url %>'">Receipt</button> 
-    
+
+    <% if user_signed_in?%>
+    <%= link_to "Delete", [@myth, fact], method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
+    <% end %>
     </p>
 <% end %>
 <br>
