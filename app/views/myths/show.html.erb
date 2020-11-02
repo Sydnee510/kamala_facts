@@ -1,40 +1,39 @@
 <div class="myth">
-<h5>FALSE STATEMENT: </h5>
-<h3><%= @myth.false_content %> </h3><br><br>
+<div>FALSE STATEMENT: </div>
+<div><b><%= @myth.false_content %> </b></div><br>
 
 <% if user_signed_in?%>
 <a href="/myths/<%= @myth.id %>/facts/new">Add a new fact</a>
 <% end %>
-<h5>Facts:</h5>
+<div>Facts:</div>
 <% @myth.facts.each do |fact| %>
-    <ul> 
-    <li class="t-content"> <%= fact.true_content %>
+    <p class="t-content"> 
+     <%= fact.true_content %>
     <br>
     <button onclick="document.location='<%=fact.receipt_url %>'">Receipt</button> 
-    </li>
-    </ul>
-<% end %>
     
-
+    </p>
+<% end %>
+<br>
+<br>
 <a href="/">Back</a>
 </div>
 
 <style>
+
 .myth{
-    padding: 2em;
-    margin: 0 auto;
-    width: 541px;
-    height: 31px; 
-    position: relative;  
-    
+  padding: 3em;
+  margin: 0 auto;
+  max-width: 541px;
+  max-height: 31px;
+  position: relative;
 }
-.t-content{
-    list-style-type:none;
-   
-    border-radius: 25px;
-  background: #E8E8E8;
-  padding: 20px;
-  
+.t-content {
+  background-color: white;
+  border: 2px solid white ;
+  padding: 10px 20px;
+  text-align: center;
+  border-radius: 25px;
 }
 button:hover{
 background: skyblue;

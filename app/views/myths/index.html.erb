@@ -1,13 +1,19 @@
+<div class="index">
 <h2>Kamala's Fact Search Engine</h2>
+
 <h4>Search through all the lies and the smears and find out the truth today</h4>
+
 <img src="https://www.gannett-cdn.com/presto/2019/12/05/USAT/751f29ad-47cd-4791-9506-d4b6b846b53e-KamalaHarris.jpg?crop=3703,2083,x0,y188&width=3200&height=1801&format=pjpg&auto=webp" alt="kamala"></img>
+
 <div class="search">
 <%= form_tag myths_path, :method => 'get' do %>   
     <%= text_field_tag :search, params[:search], :class => 'search-bar'%>   
+    <br> <br>
     <%= submit_tag "Search Claims", name: nil, :class => 'search-button' %> 
-
 <% end %>
-<div>
+</div>
+
+
 
 <% if @myths.blank? %>
 <div id="error_explanation">
@@ -32,17 +38,26 @@
 <% if @myths.present? %>
 <h5>FALSE STATEMENTS:</h5>
 <% @myths.each do |myth| %>
-    <h3><%= link_to myth.false_content, myth %>
+    <p><%= link_to myth.false_content, myth %>
     <% if user_signed_in?%>
     <%= link_to "Edit", edit_myth_path(myth) %>
     <%= link_to "Delete", myth_path(myth), method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
     <% end %>
-    </h3>
+    </p>
 <%end%>
 <% end %>
+<br>
+</div>
 
 <style>
-h3 a{
+.index{
+  margin: 0 auto;
+  padding: 3em;
+  max-width: 541px;
+  max-height: 31px;
+  position: relative;
+}
+p a{
   background-color: white;
   color: black;
   border: 2px solid white ;
@@ -51,25 +66,28 @@ h3 a{
   text-decoration: none;
   display: inline-block;
   border-radius: 25px;
-
+  line-height: 1.5em;
+    height: 2em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 500px;
+    position: relative;
 }
-h3 a:hover, h3 a:active{
+p a:hover, p a:active{
   background-color: tan;
   color: white;
 } 
        
 .search {
   padding: 2em;
-  margin: 0 auto;
-  width: 541px;
-  height: 31px;
- 
+  
 }
 img{
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 25%;
+    width: 50%;
 }
 form {
   display: flex;
@@ -79,7 +97,7 @@ form {
 .search-bar{
   width: 541px;
   height: 31px;
- 
+  position: relative;
 
 }
 
@@ -96,8 +114,6 @@ input[type="search"] {
 	font-size: 1.1em;
 	text-decoration: none;
 	line-height: normal;
-	max-height: 51;
-  
   flex: 2 0 250px;
 }
 
@@ -126,17 +142,5 @@ input[type="search"]:focus {
 }
 .search-button:hover {
   background: skyblue;
-}
-
-
-  
-  html, body {
-    margin: 0;
-    padding: 0;
-  }
-  
-  
-
-
-      
+}      
 </style>
