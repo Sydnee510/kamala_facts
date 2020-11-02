@@ -10,7 +10,7 @@
     <p class="t-content"> 
      <%= fact.true_content %>
     <br>
-    <button onclick="document.location='<%=fact.receipt_url %>'">Receipt</button> 
+    <a href="<%=fact.receipt_url %>">Receipt</a> 
 
     <% if user_signed_in?%>
     <%= link_to "Delete", [@myth, fact], method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
