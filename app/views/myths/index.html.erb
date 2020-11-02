@@ -1,9 +1,9 @@
 <h2>Kamala's Fact Search Engine</h2>
-<h3>Search through all the lies and the smears and find out the truth today</h3>
+<h4>Search through all the lies and the smears and find out the truth today</h4>
 <img src="https://www.gannett-cdn.com/presto/2019/12/05/USAT/751f29ad-47cd-4791-9506-d4b6b846b53e-KamalaHarris.jpg?crop=3703,2083,x0,y188&width=3200&height=1801&format=pjpg&auto=webp" alt="kamala"></img>
 <div class="search">
 <%= form_tag myths_path, :method => 'get' do %>   
-    <%= text_area_tag :search, params[:search], :class => 'search-bar'%>   
+    <%= text_field_tag :search, params[:search], :class => 'search-bar'%>   
     <%= submit_tag "Search Claims", name: nil, :class => 'search-button' %> 
 
 <% end %>
@@ -28,7 +28,7 @@
 <% if user_signed_in?%>
 <%= link_to 'Create Myth', new_myth_path %><br> <br>
 <% end %>
-
+        
 <% if @myths.present? %>
 <h5>FALSE STATEMENTS:</h5>
 <% @myths.each do |myth| %>
@@ -40,7 +40,23 @@
     </h3>
 <%end%>
 <% end %>
+
 <style>
+h3 a{
+  background-color: white;
+  color: black;
+  border: 2px solid white ;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 25px;
+
+}
+h3 a:hover, h3 a:active{
+  background-color: tan;
+  color: white;
+} 
        
 .search {
   padding: 2em;

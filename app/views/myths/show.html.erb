@@ -9,7 +9,8 @@
 <% @myth.facts.each do |fact| %>
     <ul> 
     <li class="t-content"> <%= fact.true_content %>
-    <a href="<%=fact.receipt_url %>">Receipt</a> 
+    <br>
+    <button onclick="document.location='<%=fact.receipt_url %>'">Receipt</button> 
     </li>
     </ul>
 <% end %>
@@ -34,5 +35,8 @@
   background: #E8E8E8;
   padding: 20px;
   
+}
+button:hover{
+background: skyblue;
 }
 </style>
