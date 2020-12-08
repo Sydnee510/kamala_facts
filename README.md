@@ -1,24 +1,37 @@
-# README
+# Kamala Harris Fact Checker
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a search engine for users to look through all of the lies and smears and find out the truth about Kamala Harris. Users can type in the search bar to search up a claim and once they click on each claim, they will be presented with supporting evidence that prove the claim is true or false. Each piece of evidence will have a link to a a receipt where the user can go read more information about the topic.
 
-Things you may want to cover:
+## Demo
 
-* Ruby version
+https://kamalafacts.com/
 
-* System dependencies
+## Installation
 
-* Configuration
+Clone this repo:
 
-* Database creation
+https://github.com/Sydnee510/facts_app
 
-* Database initialization
+Install Dependicies:
 
-* How to run the test suite
+    $ bundle install
 
-* Services (job queues, cache servers, search engines, etc.)
+Create Database:
 
-* Deployment instructions
+    $ rails db:create 
 
-* ...
+Migrate Database:
+
+    $ rails db:migrate
+
+Start Server:
+
+    $ rails s
+
+ ## Framework
+
+ Ruby on Rails
+
+ ## Database
+
+PostgreSQL   
