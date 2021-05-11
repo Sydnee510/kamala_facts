@@ -1,0 +1,27 @@
+<footer>
+  <nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+    <div class="container-fluid">
+      <small>&copy; 2020, Queen Workx </small>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
+        <ul class="navbar-nav">
+          <% if user_signed_in? %>
+            <span class="navbar-text">
+              Logged in as <%= current_user.email %>
+            </span>
+            <li class="nav-item">
+              <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, :class => 'nav-link' %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</footer>

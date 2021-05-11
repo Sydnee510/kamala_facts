@@ -16,3 +16,78 @@
 
 @import "bootstrap/scss/bootstrap";
 @import "bootstrap-icons/font/bootstrap-icons.css";
+
+body {
+  background: honeydew;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 3.5rem); // remove margin-top from view height
+  justify-content: space-between;
+  margin: 3.5rem 0 0;
+  padding: 0;
+  position: relative;
+  min-height: 100vh;
+}
+
+main {
+  height: auto;
+}
+
+h1 {
+  margin: 2rem 0;
+}
+h2 {
+  margin: 1.5rem 0;
+}
+
+footer {
+  small {
+    color: #fff;
+  }
+}
+
+p a {
+  background-color: white;
+  color: black;
+  border: 2px solid white;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 25px;
+  line-height: 1.5em;
+  height: 2em;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 500px;
+  position: relative;
+}
+
+p a:hover,
+p a:active {
+  background-color: tan;
+  color: white;
+}
+
+img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.navbar-brand {
+  min-width: 25vw;
+}
+
+.external-link-container {
+  a {
+    padding: 1em;
+  }
+
+  .row {
+    text-align: center;
+    margin: 1.5em 0 1.5em;
+  }
+}
