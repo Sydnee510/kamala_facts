@@ -1,5 +1,5 @@
 class Myth < ApplicationRecord
-    include PgSearch
+    include PgSearch::Model
     has_many :facts
     validates :false_content, presence: true
     accepts_nested_attributes_for :facts, reject_if: :all_blank
