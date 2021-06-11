@@ -9,67 +9,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  
-
-  <div class="navbar-text float-right">
-  <a class="navbar-link" href ="/">Search Myths </a>
-  <% if user_signed_in? %>
-
-    Logged in as <strong><%= current_user.email %></strong>.
-    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  <% else %>
-   <%# signup link commented out--  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %>
-    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-  <% end %>
-  </div>
   <body>
-  <% if notice %>
-  <p class="alert alert-success"><%= notice %></p>
-<% end %>
-<% if alert %>
-  <p class="alert alert-danger"><%= alert %></p>
-<% end %>
-
+    <%= render 'layouts/header' %>
     <%= yield %>
-    <footer> <small>&copy; 2020, Queen Workx </small></footer>
+    <%= render 'layouts/footer' %>
   </body>
-  
 </html>
-
-<style>
-footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background: #e9e9e9;
-}
-html body{
-  background: honeydew;
-  text-align: center;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  position: relative;
-}
-.navbar-text{
-  overflow: hidden;
-  background-color: #e9e9e9;
-  margin: 0;
-}
-.navbar-link{
-  float: left;
-  display: block;
-  color: black;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-}
-.navbar-text .navbar-link:hover{
-  background-color: tan;
-  color: black;
-}
-
-</style>

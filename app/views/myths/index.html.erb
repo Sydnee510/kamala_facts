@@ -1,149 +1,65 @@
-<div class="index">
-<a href="https://en.wikipedia.org/wiki/Kamala_Harris">Who is Kamala Harris?--wikipedia</a>
-<br>
-<a href="https://www.harris.senate.gov/">Kamala's Official Senate Site</a>
-<h2>Kamala's Fact Search Engine</h2>
-
-<h4>Search through all the lies and the smears and find out the truth today</h4>
-
-<img src="https://www.gannett-cdn.com/presto/2019/12/05/USAT/751f29ad-47cd-4791-9506-d4b6b846b53e-KamalaHarris.jpg?crop=3703,2083,x0,y188&width=3200&height=1801&format=pjpg&auto=webp" alt="kamala"></img>
-
-<div class="search">
-<%= form_tag myths_path, :method => 'get' do %>   
-    <%= text_field_tag :search, params[:search], :class => 'search-bar'%>   
-    <br> <br>
-    <%= submit_tag "Search Claims", name: nil, :class => 'search-button' %> 
-<% end %>
-</div>
-
-
-
-<% if @myths.blank? %>
-<div id="error_explanation">
-  <h2>cant find any search results with that criteria</h2>
-  <h2>TRY AGAIN </h2>
-  Suggestions:
-<ul>
-<li>Make sure all words are spelled correctly.</li>
-<li>Try different keywords.</li>
-<li>Try more general keywords.</li>
-<li>Try fewer keywords.</li>
-</ul>
-  <a href ="/">back</a>
-</div>
-<% end %>
-<br>
-
-<% if user_signed_in?%>
-<%= link_to 'Create Myth', new_myth_path %><br> <br>
-<% end %>
-        
-<% if @myths.present? %>
-<h5>FALSE STATEMENTS:</h5>
-<% @myths.each do |myth| %>
-    <p><%= link_to myth.false_content, myth %>
-    <% if user_signed_in?%>
-    <%= link_to "Edit", edit_myth_path(myth) %>
-    <%= link_to "Delete", myth_path(myth), method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
+<main class="container">
+  <div class="row">
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
     <% end %>
-    </p>
-<%end%>
-<% end %>
-<br>
-</div>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+  </div>
 
-<style>
-.index{
-  margin: 0 auto;
-  padding: 3em;
-  max-width: 541px;
-  max-height: 31px;
-  position: relative;
-}
-p a{
-  background-color: white;
-  color: black;
-  border: 2px solid white ;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 25px;
-  line-height: 1.5em;
-    height: 2em;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    max-width: 500px;
-    position: relative;
-}
-p a:hover, p a:active{
-  background-color: tan;
-  color: white;
-} 
-       
-.search {
-  padding: 2em;
-  
-}
-img{
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 50%;
-}
-form {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 auto;
-}
-.search-bar{
-  width: 541px;
-  height: 31px;
-  position: relative;
+  <h1 class="text-center">Kamala's Fact Search Engine</h1>
 
-}
+  <img class="w-100 rounded" src="https://www.gannett-cdn.com/presto/2019/12/05/USAT/751f29ad-47cd-4791-9506-d4b6b846b53e-KamalaHarris.jpg?crop=3703,2083,x0,y188&width=3200&height=1801&format=pjpg&auto=webp" alt="kamala" />
 
-input[type="search"] {
-  border: none;
-  whitespace: wrap;
-  border-radius: 5px 5px 5px 5px;
-	background: #E9E9E9;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	padding: 0.35em 0.75em;
-	border: none;
-	font-size: 1.1em;
-	text-decoration: none;
-	line-height: normal;
-  flex: 2 0 250px;
-}
+  <div class="container external-link-container my-4 border-bottom">
+    <div class="row">
+      <div class="col">
+        <a href="https://en.wikipedia.org/wiki/Kamala_Harris" rel="noopener" target="_blank" title="Read More on Wikipedia.org">Who is Kamala Harris? <i class="bi bi-box-arrow-in-up-right"></i></a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <a href="https://www.whitehouse.gov/administration/vice-president-harris/" rel="noopener" target="_blank" title="Read More on Whitehouse.gov">Vice President (2021-) <i class="bi bi-box-arrow-in-up-right"></i></a>
+      </div>
+      <div class="col">
+        <a href="https://bioguide.congress.gov/search/bio/H001075" rel="noopener" target="_blank" title="Read More on Congress.gov">Senator (2017-2021) <i class="bi bi-box-arrow-in-up-right"></i></a>
+      </div>
+    </div>  
+  </div>
 
-input[type="search"]:focus {
-  background: Thistle;
-  color: white;
-  letter-spacing: .1em;
-  transition: background 400ms ease-in-out;
-  outline: none;
-}
+  <div class="container">
+    <h2 class="text-center">Search through the lies and the smears to discover the truth today!</h2>
 
-.search-button {
-  flex: 1 0 90px;
-  
-  max-height: 3em;
-  font-size: 1.1em;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  border-radius: 0px 5px 5px 0px;
-	background: silver;
-  color: white;
-  border: none;
-  padding: 0.35em 0.75em;
-  cursor: pointer;
+    <% if @myths.blank? %>
+      <div id="error_explanation">
+        <h2>cant find any search results with that criteria</h2>
+        <h2>TRY AGAIN </h2>
+        Suggestions:
+        <ul>
+        <li>Make sure all words are spelled correctly.</li>
+        <li>Try different keywords.</li>
+        <li>Try more general keywords.</li>
+        <li>Try fewer keywords.</li>
+        </ul>
+        <a href ="/">back</a>
+      </div>
+    <% end %>
 
-}
-.search-button:hover {
-  background: skyblue;
-}      
-</style>
+    <% if user_signed_in?%>
+      <%= link_to 'Create Myth', new_myth_path %><br> <br>
+    <% end %>
+            
+    <% if @myths.present? %>
+      <h3>FALSE STATEMENTS:</h3>
+      <% @myths.each do |myth| %>
+          <p><%= link_to myth.false_content, myth %>
+          <% if user_signed_in?%>
+          <%= link_to "Edit", edit_myth_path(myth) %>
+          <%= link_to "Delete", myth_path(myth), method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
+          <% end %>
+          </p>
+      <%end%>
+    <% end %>
+  </div>
+</main>
