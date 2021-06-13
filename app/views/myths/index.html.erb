@@ -49,17 +49,14 @@
 
   <div class="container">
     <% if @myths.blank? %>
-      <div id="error_explanation">
-        <h2>cant find any search results with that criteria</h2>
-        <h2>TRY AGAIN </h2>
-        Suggestions:
+      <div id="error_explanation" class="error-container">
+        <h3 class="text-center lh-base mb-3">There are no results with that criteria.<br>Please try again.</h3>
         <ul>
-        <li>Make sure all words are spelled correctly.</li>
-        <li>Try different keywords.</li>
-        <li>Try more general keywords.</li>
-        <li>Try fewer keywords.</li>
+          <li>Make sure all words are spelled correctly.</li>
+          <li>Try different keywords.</li>
+          <li>Try more general keywords.</li>
+          <li>Try fewer keywords.</li>
         </ul>
-        <a href ="/">back</a>
       </div>
     <% end %>
 

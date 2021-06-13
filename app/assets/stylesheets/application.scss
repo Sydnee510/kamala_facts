@@ -109,6 +109,20 @@ form .card-body {
   }
 }
 
-#error_explanation li {
+#error_explanation:not(.error-container) li {
   color: $danger;
+}
+
+.error-container {
+  margin: 0 auto;
+  max-width: 50vw;
+
+  ul {
+    margin: 0 auto;
+    max-width: 25vw;
+
+    li {
+      padding: .5rem 0;
+    }
+  }
 }
