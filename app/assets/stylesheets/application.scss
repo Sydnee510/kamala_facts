@@ -79,14 +79,23 @@ img.hero {
   max-height: 50vh;
   width: auto;
 }
-
-.card-header {
-  padding: 0.75rem 1rem;
+.card {
+  &-header {
+    padding: 0.75rem 1rem;
+  }
+  &-body {
+    font-style: italic;
+    padding: 1.5rem 2.25rem 1.25rem;
+  }
 }
 
-.card-body {
-  padding: 1.5rem 2.25rem 1.25rem;
-  font-style: italic;
+form .card-body {
+  padding: 0;
+  
+  textarea {
+    padding: 1.5rem 2.25rem 1.25rem;
+    min-height: 35vh;
+  }
 }
 
 .external-link-container {
@@ -98,4 +107,8 @@ img.hero {
     text-align: center;
     margin: 1.5em 0 1.5em;
   }
+}
+
+#error_explanation li {
+  color: $danger;
 }

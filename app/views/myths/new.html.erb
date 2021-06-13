@@ -1,26 +1,32 @@
-<% if @myth.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@myth.errors.count, "error") %> prohibited this myth from being saved:</h2>
-  <ul>
-  <% @myth.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li> <br>
+<main class="container">
+  
+  <% if @myth.errors.any? %>
+    <div id="error_explanation">
+      <p><%= pluralize(@myth.errors.count, "error") %> prohibited this myth from being saved:</p>
+      <ul>
+      <% @myth.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li> <br>
+      <% end %>
+      </ul>
+    </div>
   <% end %>
-  </ul>
-</div>
-<% end %>
 
-<%= form_for(@myth) do |f| %>
-    
-    <%= f.label :new_myth_content %>
-    <%= f.text_area :false_content %> <br>
-    <%=f.submit %>
-    
-  <% end %>
-  <style>
-        li {
-          color: red;
-          font-weight: bold;
-        }
-</style>
+  <div class="card">
+    <div class="card-header">
+      <h4 class="m-0"><i class="bi bi-exclamation-octagon-fill danger"></i> FALSE CLAIM</h4>
+    </div>
+    <%= form_for(@myth) do |f| %>
+      <div class="card-body">
+        <%= f.label :new_myth_content, class: "visually-hidden" %>
+        <%= f.text_area :false_content, class: "form-control", placeholder: "Add false content here." %>
+      </div>
+      <div class="card-footer">
+        <%= f.submit "Save Myth", class: "btn btn-primary w-100" %>
+      </div>
+    <% end %>
+  </div>
 
-<a href="/">Back</a>
+  <div class="row my-5">
+    <a href="/">Cancel</a>
+  </div>
+</main>
