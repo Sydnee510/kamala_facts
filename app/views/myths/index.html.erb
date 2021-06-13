@@ -69,27 +69,28 @@
           <%= link_to 'Add New Myth', new_myth_path, class: "edit" %>
         <% end %>
       </div>
+
       <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
         <% @myths.each do |myth| %>
-        <div class="col">
-          <div class="card h-100">
-            <div class="card-header">
-              <h4 class="m-0"><i class="bi bi-exclamation-octagon-fill"></i> FALSE CLAIM</h4>
-            </div>
-            <div class="card-body">
-              <h5 class="mb-2 text-muted"><%= myth.false_content %></h5>
-            </div>
-            <div class="card-footer">
-              <%= link_to "Fact Check!", myth, class: "btn btn-primary d-block" %>
-              <% if !user_signed_in?%>
-                <div class="d-flex justify-content-between mt-2 px-2 py-1">
-                  <%= link_to "Delete", myth_path(myth), method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
-                  <%= link_to "Edit Myth", edit_myth_path(myth), class: "edit" %>
-                </div>
-              <% end %>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-header">
+                <h4 class="m-0"><i class="bi bi-exclamation-octagon-fill danger"></i> FALSE CLAIM</h4>
+              </div>
+              <div class="card-body">
+                <h5 class="mb-2 text-muted"><%= myth.false_content %></h5>
+              </div>
+              <div class="card-footer">
+                <%= link_to "Learn the Truth!", myth, class: "btn btn-primary d-block" %>
+                <% if user_signed_in?%>
+                  <div class="d-flex justify-content-between mt-2 px-2 py-1">
+                    <%= link_to "Delete", myth_path(myth), method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
+                    <%= link_to "Edit Myth", edit_myth_path(myth), class: "edit" %>
+                  </div>
+                <% end %>
+              </div>
             </div>
           </div>
-        </div>
         <%end%>
       </div>
     <% end %>
