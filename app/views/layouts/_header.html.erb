@@ -1,16 +1,7 @@
-<header class="fixed-top">
+<header>
   <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-
       <a class="navbar-brand" href="/">Kamala Facts</a>
-    
-      <%= form_tag myths_path, class: "d-flex align-items-center flex-grow-1", :method => 'get' do %>
-        <div class="input-group">
-          <%= text_field_tag :search, params[:search], :class => 'form-control me-2', aria_label: "Search" %>
-          <%= submit_tag("Search Claims", name: nil, class: "btn btn-outline-secondary")%>
-        </div>
-      <% end %>
-
     </div>
   </nav>
 </header>
