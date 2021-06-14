@@ -14,8 +14,12 @@
             </span>
             <li class="nav-item">
               <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %>
-            </li>
+            </li> |
+          <li class="nav-item">
+          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            </li> 
           <% else %>
+          <%# signup link commented out--  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %>
             <li class="nav-item">
               <%= link_to "Login", new_user_session_path, :class => 'nav-link' %>
             </li>
