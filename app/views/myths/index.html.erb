@@ -1,5 +1,5 @@
-<main class="container">
-  <div class="row">
+<main>
+  <div class="container">
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
@@ -8,46 +8,40 @@
     <% end %>
   </div>
 
-  <div class="text-center mb-2 d-flex flex-column align-items-center">
-    <h1>Kamala's Fact Search Engine</h1>
-    <p>Vice President Kamala Devi Harris is the first woman, the first Black person, and the first Asian-American person elected vice president of the United States.</p>
-  </div>
+  <div class="align-items-center bg-white">
+    <h1 class="text-center px-2 py-4 m-0">Kamala's Fact Search Engine</h1>
 
-  <div class="row">
-    <img class="hero rounded img-fluid" src="https://www.gannett-cdn.com/presto/2019/12/05/USAT/751f29ad-47cd-4791-9506-d4b6b846b53e-KamalaHarris.jpg" alt="Kamala Harris" />
-  </div>
-
-  <h2 class="text-center">Search through the false claims below to learn more!</h2>
-
-  <%= form_tag myths_path, class: "container form-inline d-flex border-bottom my-4 pb-2", :method => 'get' do %>
-      <label class="visually-hidden" for="searchInput">Search</label>
-      <div class="input-group">
-        <%= text_field_tag :search, params[:search], :id => 'searchInput', :class => 'form-control form-control-lg', :placeholder => "Search", :aria_label => "Search" %>
-        <span class="input-group-text btn-primary px-3">
-          <i class="bi bi-search"></i>
-        </span>
-      </div>
-  <% end %>
-
-  <hr>
-
-   <div class="container external-link-container my-4 border-bottom">
-    <div class="row">
-      <div class="col">
-        <a href="https://en.wikipedia.org/wiki/Kamala_Harris" rel="noopener" target="_blank" title="Read More on Wikipedia.org">Who is Kamala Harris? <i class="bi bi-box-arrow-in-up-right"></i></a>
+    <div class="container">
+      <div class="row align-items-center flex-column-reverse flex-lg-row">
+        <div class="col-12 col-lg-5 pe-4 pe-lg-5 mt-4 mb-4 my-lg-0">
+          <h2>Who is Kamala?</h2>
+          <p class="fst-italic my-4"><b>Kamala Devi Harris</b> is the first woman, the first Black person, and the first Asian-American person elected vice president of the United States.</p>
+          <p class="mb-3">Learn more:</p>
+          <div class="fs-7 d-flex flex-column flex-sm-row justify-content-between flex-wrap flex-lg-column">
+            <a class="mb-3 mb-sm-0 mb-lg-3" href="https://www.whitehouse.gov/administration/vice-president-harris/" rel="noopener" target="_blank" title="Read More on Whitehouse.gov">Whitehouse.gov <i class="bi bi-box-arrow-in-up-right"></i></a>
+            <a class="mb-3 mb-sm-0 mb-lg-3 mx-sm-3 mx-lg-0" href="https://bioguide.congress.gov/search/bio/H001075" rel="noopener" target="_blank" title="Read More on Congress.gov">Congress.gov <i class="bi bi-box-arrow-in-up-right"></i></a>
+            <a class="mb-3 mb-sm-0 mb-lg-3" href="https://en.wikipedia.org/wiki/Kamala_Harris" rel="noopener" target="_blank" title="Read More on Wikipedia.org">Wikipedia.org <i class="bi bi-box-arrow-in-up-right"></i></a>
+          </div>  
+        </div>
+        <img class="col-12 col-lg-7 g-0" src="https://www.gannett-cdn.com/presto/2019/12/05/USAT/751f29ad-47cd-4791-9506-d4b6b846b53e-KamalaHarris.jpg" alt="Kamala Harris" />
       </div>
     </div>
-    <div class="row">
-      <div class="col">
-        <a href="https://www.whitehouse.gov/administration/vice-president-harris/" rel="noopener" target="_blank" title="Read More on Whitehouse.gov">Vice President (2021-) <i class="bi bi-box-arrow-in-up-right"></i></a>
-      </div>
-      <div class="col">
-        <a href="https://bioguide.congress.gov/search/bio/H001075" rel="noopener" target="_blank" title="Read More on Congress.gov">Senator (2017-2021) <i class="bi bi-box-arrow-in-up-right"></i></a>
-      </div>
-    </div>  
-  </div> 
+  </div>
+
+  <h3 class="text-center container mt-4">Search through the false claims below to learn more!</h3>
+
+  <%= form_tag myths_path, class: "container form-inline d-flex border-bottom my-4 pb-2", :method => 'get' do %>
+    <label class="visually-hidden" for="searchInput">Search</label>
+    <div class="input-group">
+      <%= text_field_tag :search, params[:search], :id => 'searchInput', :class => 'form-control form-control-lg', :placeholder => "Search", :aria_label => "Search" %>
+      <span class="input-group-text btn-primary px-3">
+        <i class="bi bi-search"></i>
+      </span>
+    </div>
+  <% end %>
 
   <div class="container">
+    <hr>
     <% if @myths.blank? %>
       <div id="error_explanation" class="error-container">
         <h3 class="text-center lh-base mb-3">There are no results with that criteria.<br>Please try again.</h3>
@@ -72,10 +66,10 @@
           <div class="col">
             <div class="card h-100">
               <div class="card-header">
-                <h4 class="m-0"><i class="bi bi-exclamation-octagon-fill danger"></i> FALSE CLAIM</h4>
+                <h5 class="m-0"><i class="bi bi-exclamation-octagon-fill danger"></i> FALSE CLAIM</h5>
               </div>
               <div class="card-body">
-                <h5 class="mb-2 text-muted"><%= myth.false_content %></h5>
+                <h6 class="mb-2 text-muted"><%= myth.false_content %></h6>
               </div>
               <div class="card-footer">
                 <%= link_to "Learn the Truth!", myth, class: "btn btn-primary d-block" %>

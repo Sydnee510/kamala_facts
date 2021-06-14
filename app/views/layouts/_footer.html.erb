@@ -9,14 +9,14 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarCollapse">
         <ul class="navbar-nav">
           <% if user_signed_in? %>
-            <span class="navbar-text">
+            <span class="nav-item">
               Logged in as <%= current_user.email %>
             </span>
             <li class="nav-item">
-              <%= link_to 'Edit profile', edit_user_registration_path, :class => 'nav-link' %>
+              <%= link_to 'Edit Profile', edit_user_registration_path, :class => 'nav-link' %>
             </li> |
-          <li class="nav-item">
-          <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+            <li class="nav-item">
+              <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'nav-link'  %>
             </li> 
           <% else %>
           <%# signup link commented out--  <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link' %>

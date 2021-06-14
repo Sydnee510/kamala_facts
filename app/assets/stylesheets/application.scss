@@ -26,13 +26,8 @@ body {
 }
 
 main {
-  margin: 2rem 0;
-  min-height: calc(100vh - (2rem * 2) - (56px * 2)); // remove margins & header/footer
-}
-
-h1 + p {
-  font-style: italic;
-  max-width: 600px;
+  margin: 0 0 2rem;
+  min-height: calc(100vh - 2rem - (56px * 2)); // remove margins & header/footer
 }
 
 h1 span {
@@ -40,11 +35,7 @@ h1 span {
   font-weight: normal;
 }
 
-h2 {
-  margin: 1.5rem 0;
-}
-
-h4 {
+h5 {
   font-size: calc(1.125rem + 0.3vw);
 }
 
@@ -72,6 +63,10 @@ footer {
   small {
     color: #fff;
   }
+  span.nav-item {
+    color: $navbar-dark-brand-hover-color;
+    padding: .5rem;
+  }
 }
 
 img.hero {
@@ -79,6 +74,7 @@ img.hero {
   max-height: 50vh;
   width: auto;
 }
+
 .card {
   &-header {
     padding: 0.75rem 1rem;
@@ -125,4 +121,8 @@ form .card-body {
       padding: .5rem 0;
     }
   }
+}
+
+.fs-7 {
+  font-size: .875rem;
 }
