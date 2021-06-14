@@ -8,11 +8,30 @@
     <% end %>
   </div>
 
-  <h1 class="text-center">Kamala's Fact Search Engine</h1>
+  <div class="text-center mb-2 d-flex flex-column align-items-center">
+    <h1>Kamala's Fact Search Engine</h1>
+    <p>Vice President Kamala Devi Harris is the first woman, the first Black person, and the first Asian-American person elected vice president of the United States.</p>
+  </div>
 
-  <img class="w-100 rounded" src="https://www.gannett-cdn.com/presto/2019/12/05/USAT/751f29ad-47cd-4791-9506-d4b6b846b53e-KamalaHarris.jpg?crop=3703,2083,x0,y188&width=3200&height=1801&format=pjpg&auto=webp" alt="kamala" />
+  <div class="row">
+    <img class="hero rounded img-fluid" src="https://www.gannett-cdn.com/presto/2019/12/05/USAT/751f29ad-47cd-4791-9506-d4b6b846b53e-KamalaHarris.jpg" alt="Kamala Harris" />
+  </div>
 
-  <div class="container external-link-container my-4 border-bottom">
+  <h2 class="text-center">Search through the false claims below to learn more!</h2>
+
+  <%= form_tag myths_path, class: "container form-inline d-flex border-bottom my-4 pb-2", :method => 'get' do %>
+      <label class="visually-hidden" for="searchInput">Search</label>
+      <div class="input-group">
+        <%= text_field_tag :search, params[:search], :id => 'searchInput', :class => 'form-control form-control-lg', :placeholder => "Search", :aria_label => "Search" %>
+        <span class="input-group-text btn-primary px-3">
+          <i class="bi bi-search"></i>
+        </span>
+      </div>
+  <% end %>
+
+  <hr>
+
+  <%# <div class="container external-link-container my-4 border-bottom">
     <div class="row">
       <div class="col">
         <a href="https://en.wikipedia.org/wiki/Kamala_Harris" rel="noopener" target="_blank" title="Read More on Wikipedia.org">Who is Kamala Harris? <i class="bi bi-box-arrow-in-up-right"></i></a>
@@ -26,40 +45,51 @@
         <a href="https://bioguide.congress.gov/search/bio/H001075" rel="noopener" target="_blank" title="Read More on Congress.gov">Senator (2017-2021) <i class="bi bi-box-arrow-in-up-right"></i></a>
       </div>
     </div>  
-  </div>
+  </div> %>
 
   <div class="container">
-    <h2 class="text-center">Search through the lies and the smears to discover the truth today!</h2>
-
     <% if @myths.blank? %>
-      <div id="error_explanation">
-        <h2>cant find any search results with that criteria</h2>
-        <h2>TRY AGAIN </h2>
-        Suggestions:
+      <div id="error_explanation" class="error-container">
+        <h3 class="text-center lh-base mb-3">There are no results with that criteria.<br>Please try again.</h3>
         <ul>
-        <li>Make sure all words are spelled correctly.</li>
-        <li>Try different keywords.</li>
-        <li>Try more general keywords.</li>
-        <li>Try fewer keywords.</li>
+          <li>Make sure all words are spelled correctly.</li>
+          <li>Try different keywords.</li>
+          <li>Try more general keywords.</li>
+          <li>Try fewer keywords.</li>
         </ul>
-        <a href ="/">back</a>
       </div>
     <% end %>
 
-    <% if user_signed_in?%>
-      <%= link_to 'Create Myth', new_myth_path %><br> <br>
-    <% end %>
-            
     <% if @myths.present? %>
-      <h3>FALSE STATEMENTS:</h3>
-      <% @myths.each do |myth| %>
-          <p><%= link_to myth.false_content, myth %>
-          <% if user_signed_in?%>
-          <%= link_to "Edit", edit_myth_path(myth) %>
-          <%= link_to "Delete", myth_path(myth), method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
-          <% end %>
-          </p>
-      <%end%>
+      <div class="d-flex flex-row justify-content-end my-3">
+        <% if user_signed_in?%>
+          <%= link_to 'Add New Myth', new_myth_path, class: "edit" %>
+        <% end %>
+      </div>
+
+      <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+        <% @myths.each do |myth| %>
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-header">
+                <h4 class="m-0"><i class="bi bi-exclamation-octagon-fill danger"></i> FALSE CLAIM</h4>
+              </div>
+              <div class="card-body">
+                <h5 class="mb-2 text-muted"><%= myth.false_content %></h5>
+              </div>
+              <div class="card-footer">
+                <%= link_to "Learn the Truth!", myth, class: "btn btn-primary d-block" %>
+                <% if user_signed_in?%>
+                  <div class="d-flex justify-content-between mt-2 px-2 py-1">
+                    <%= link_to "Delete", myth_path(myth), method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
+                    <%= link_to "Edit Myth", edit_myth_path(myth), class: "edit" %>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
     <% end %>
   </div>
 </main>

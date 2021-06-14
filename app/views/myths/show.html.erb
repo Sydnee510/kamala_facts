@@ -1,44 +1,44 @@
-<div class="myth">
-<div>FALSE STATEMENT: </div>
-<div><b><%= @myth.false_content %> </b></div><br>
-
-<% if user_signed_in?%>
-<a href="/myths/<%= @myth.id %>/facts/new">Add a new fact</a>
-<% end %>
-<div>Facts:</div>
-<% @myth.facts.each do |fact| %>
-    <p class="t-content"> 
-     <%= fact.true_content %>
-    <br>
-    <a href="<%=fact.receipt_url %>">Receipt</a> 
-
+<main class="myth container">
+  <div class="mb-2 d-flex align-items-end">
+    <h1><i class="bi bi-exclamation-octagon-fill danger"></i> FALSE CLAIM: 
+      <span class=""><%= @myth.false_content %></span>
+    </h1>
     <% if user_signed_in?%>
-    <%= link_to "Delete", [@myth, fact], method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
+      <%= link_to "Update&nbsp;Myth".html_safe, edit_myth_path(@myth), class: "edit" %>
     <% end %>
-    </p>
-<% end %>
-<br>
-<br>
-<a href="/">Back</a>
-</div>
+  </div>
 
-<style>
+  <div class="d-flex flex-row justify-content-end my-3">
+    <% if user_signed_in?%>
+      <a href="/myths/<%= @myth.id %>/facts/new" class="edit">Add New Fact</a>
+    <% end %>
+  </div>
 
-.myth{
-  padding: 3em;
-  margin: 0 auto;
-  max-width: 541px;
-  max-height: 31px;
-  position: relative;
-}
-.t-content {
-  background-color: white;
-  border: 2px solid white ;
-  padding: 10px 20px;
-  text-align: center;
-  border-radius: 25px;
-}
-button:hover{
-background: skyblue;
-}
-</style>
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+    <% @myth.facts.each do |fact| %>
+      <div class="col">
+        <div class="card h-100">
+          <div class="card-header">
+            <h4 class="m-0"><i class="bi bi-check-circle-fill success"></i> FACT</h4>
+          </div>
+          <div class="card-body">
+            <h5 class="mb-2 text-muted"><%= fact.true_content %></h5> 
+          </div>
+          <div class="card-footer">
+            <a href="<%=fact.receipt_url %>" class="btn btn-primary d-block" rel="noopener" target="_blank">View Receipt! <i class="bi bi-box-arrow-in-up-right"></i></a> 
+            <% if user_signed_in?%>
+              <div class="d-flex justify-content-between mt-2 px-2 py-1">
+                <%= link_to "Delete", [@myth, fact], method: :delete, class: "destroy", data: {confirm: "Are you sure?"} %>
+                <%# <%= link_to "Edit Fact", myth_fact_path(@myth, fact), class: "edit" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  </div>
+
+  <div class="row my-5">
+    <a href="/">Return to Search</a>
+  </div>
+</main>

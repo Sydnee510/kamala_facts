@@ -18,26 +18,54 @@
 @import "bootstrap-icons/font/bootstrap-icons.css";
 
 body {
-  background: honeydew;
-  display: flex;
-  flex-direction: column;
-  height: calc(100vh - 3.5rem); // remove margin-top from view height
-  justify-content: space-between;
-  margin: 3.5rem 0 0;
+  background: $blue-100;
+  margin: 0;
   padding: 0;
   position: relative;
   min-height: 100vh;
 }
 
 main {
-  height: auto;
+  margin: 2rem 0;
+  min-height: calc(100vh - (2rem * 2) - (56px * 2)); // remove margins & header/footer
 }
 
-h1 {
-  margin: 2rem 0;
+h1 + p {
+  font-style: italic;
+  max-width: 600px;
 }
+
+h1 span {
+  font-style: italic;
+  font-weight: normal;
+}
+
 h2 {
   margin: 1.5rem 0;
+}
+
+h4 {
+  font-size: calc(1.125rem + 0.3vw);
+}
+
+i {
+  &.danger {
+    color: $danger;
+    margin-right: .5rem;
+  }
+  &.success {
+    color: $success;
+    margin-right: .5rem;
+  }
+}
+
+a {
+  &.destroy {
+    color: $danger;
+  }
+  &.edit {
+    color: $secondary;
+  }
 }
 
 footer {
@@ -46,39 +74,28 @@ footer {
   }
 }
 
-p a {
-  background-color: white;
-  color: black;
-  border: 2px solid white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 25px;
-  line-height: 1.5em;
-  height: 2em;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  max-width: 500px;
-  position: relative;
+img.hero {
+  margin: 0 auto;
+  max-height: 50vh;
+  width: auto;
+}
+.card {
+  &-header {
+    padding: 0.75rem 1rem;
+  }
+  &-body {
+    font-style: italic;
+    padding: 1.5rem 2.25rem 1.25rem;
+  }
 }
 
-p a:hover,
-p a:active {
-  background-color: tan;
-  color: white;
-}
-
-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-}
-
-.navbar-brand {
-  min-width: 25vw;
+form .card-body {
+  padding: 0;
+  
+  textarea {
+    padding: 1.5rem 2.25rem 1.25rem;
+    min-height: 35vh;
+  }
 }
 
 .external-link-container {
@@ -89,5 +106,23 @@ img {
   .row {
     text-align: center;
     margin: 1.5em 0 1.5em;
+  }
+}
+
+#error_explanation:not(.error-container) li {
+  color: $danger;
+}
+
+.error-container {
+  margin: 0 auto;
+  max-width: 50vw;
+
+  ul {
+    margin: 0 auto;
+    max-width: 25vw;
+
+    li {
+      padding: .5rem 0;
+    }
   }
 }
