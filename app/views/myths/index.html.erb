@@ -34,10 +34,7 @@
     <label class="visually-hidden" for="searchInput">Search</label>
     <div class="input-group">
       <%= text_field_tag :search, params[:search], :id => 'searchInput', :class => 'form-control form-control-lg', :placeholder => "Search", :aria_label => "Search" %>
-      <%= submit_tag "Search Claims", name: nil, :class => 'btn btn-outline-secondary' %>
-      <span class="input-group-text btn-primary px-3">
-        <i class="bi bi-search"></i>
-      </span>
+      <%= button_tag "", name: nil, :class =>'bi bi-search' %>
     </div>
   <% end %>
 
