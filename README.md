@@ -34,4 +34,7 @@ Start Server:
 
  ## Database
 
-PostgreSQL   
+PostgreSQL
+
+ ## Want to contribute?
+Fill out this form: <a href="https://8chs9p8ozu1.typeform.com/to/qLkOY7W1" target="blank">Contribute</a>
