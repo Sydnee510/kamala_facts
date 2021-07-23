@@ -1,7 +1,7 @@
 class Myth < ApplicationRecord
     include PgSearch::Model
     has_many :facts
-    validates :false_content, presence: true
+    validates :false_content, presence: true, uniqueness:true
     accepts_nested_attributes_for :facts, reject_if: :all_blank
    # pg_search_scope :search_for, against: %i(false_content)
     pg_search_scope :search_content_for, against: :false_content, using: { tsearch: { any_word: true } }
