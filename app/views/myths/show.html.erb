@@ -1,8 +1,8 @@
 <main class="myth container">
   <div class="mb-2 d-flex align-items-end">
-    <h1 class="px-2 py-4"><i class="fas fa-stopwatch"></i> FALSE CLAIM: 
+    <h3 class="px-2 py-4"><i class="fas fa-stopwatch"></i> FALSE CLAIM: 
       <span class=""><%= @myth.false_content %></span>
-    </h1>
+    </h3>
     <% if user_signed_in?%>
       <%= link_to "Update&nbsp;Myth".html_safe, edit_myth_path(@myth), class: "edit" %>
     <% end %>
